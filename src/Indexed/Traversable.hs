@@ -18,7 +18,6 @@ module Indexed.Traversable
   ( ITraversable(..)
   ) where
 
-import Control.Applicative
 import Indexed.Functor
 import Indexed.Foldable
 

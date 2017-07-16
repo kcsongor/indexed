@@ -22,7 +22,6 @@ module Indexed.Thrist
   , Unitary
   ) where
 
-import Control.Applicative
 import Data.Monoid
 import Indexed.Functor
 import Indexed.Monoid

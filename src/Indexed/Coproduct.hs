@@ -1,5 +1,6 @@
 {-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE ExplicitNamespaces #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Indexed.Coproduct
@@ -12,10 +13,9 @@
 -- Indexed functor coproducts
 -----------------------------------------------------------------------------
 module Indexed.Coproduct
-  ( (+)(InL,InR)
+  ( type (+)(InL,InR)
   ) where
 
-import Control.Applicative
 import Indexed.Foldable
 import Indexed.Functor
 import Indexed.Traversable

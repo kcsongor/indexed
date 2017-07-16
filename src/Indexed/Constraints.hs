@@ -6,6 +6,7 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE ExplicitNamespaces #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Indexed.Constraints
@@ -19,9 +20,9 @@
 -----------------------------------------------------------------------------
 module Indexed.Constraints
   ( Dict(Dict)
-  , (|-)(Sub)
+  , type (|-)(Sub)
   , Class(byClass)
-  , (|=)(byInstance)
+  , type (|=)(byInstance)
   , (\\)
   ) where
 

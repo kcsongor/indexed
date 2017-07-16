@@ -19,7 +19,6 @@ module Indexed.Foldable
   , IIFoldable(..)
   ) where
 
-import Data.Monoid
 import Indexed.Types
 import Indexed.Monoid
 

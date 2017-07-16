@@ -2,6 +2,7 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE Rank2Types #-}
+{-# LANGUAGE ExplicitNamespaces #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Indexed.Command
@@ -13,7 +14,7 @@
 --
 -----------------------------------------------------------------------------
 module Indexed.Command
-  ( (>>)(..)
+  ( type (>>)(..)
   ) where
 
 import Indexed.Types

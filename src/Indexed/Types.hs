@@ -1,3 +1,4 @@
+{-# LANGUAGE TypeInType #-}
 {-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeOperators #-}
@@ -7,6 +8,7 @@
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE ExplicitNamespaces #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Indexed.Types
@@ -21,7 +23,7 @@
 module Indexed.Types
   (
   -- * Natural Transformations
-    (~>)()
+    type (~>)()
   , (:~>)(Nat,($$))
   -- * Limits
   , Lim
@@ -38,7 +40,7 @@ module Indexed.Types
   -- * Type Equality
   , module Data.Type.Equality
   -- * Type Application
-  , ($)()
+  , type ($)()
   ) where
 
 import Control.Category
@@ -47,6 +49,7 @@ import Data.Monoid
 import Data.Type.Equality
 import Prelude hiding (id,(.))
 import Unsafe.Coerce
+import Data.Kind
 
 -------------------------------------------------------------------------------
 -- Natural Transformations
@@ -139,7 +142,7 @@ instance (Monoid m, i ~ j) => Monoid (At m i j) where
 -- | Type alias for indexed monads, functors, etc. in Bob Atkey's style.
 type Atkey f i j a = f (At a j) i
 
-instance (Data a, Typeable i, i ~ j) => Data (At a i j) where
+instance (Data a, Typeable i, i ~ j, Typeable k) => Data (At a i (j :: k)) where
   gfoldl f z (At a) = z At `f` a
   toConstr _ = atConstr
   gunfold k z c = case constrIndex c of
@@ -190,7 +193,7 @@ uncoat (Coat a) = a
 -- | Type alias for indexed monads, functors, etc. in Bob Atkey's style.
 type Coatkey f i j a = f (Coat a j) i
 
-instance (Data a, Typeable i, i ~ j) => Data (Coat a i j) where
+instance (Data a, Typeable i, i ~ j, Typeable k) => Data (Coat a i (j :: k)) where
   gfoldl f z (Coat a) = z (\x -> Coat x) `f` a
   toConstr _ = coatConstr
   gunfold k z c = case constrIndex c of

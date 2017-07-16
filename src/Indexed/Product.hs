@@ -2,6 +2,7 @@
 {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE GADTs #-}
+{-# LANGUAGE ExplicitNamespaces #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Indexed.Product
@@ -14,12 +15,11 @@
 -- Products of indexed functors
 -----------------------------------------------------------------------------
 module Indexed.Product
-  ( (*)(..)
+  ( type (*)(..)
   , ifst
   , isnd
   ) where
 
-import Control.Applicative
 import Data.Monoid
 import Indexed.Functor
 -- import Indexed.Types

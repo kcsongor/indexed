@@ -13,7 +13,6 @@ module Indexed.Monad.Free
   , IMonadFree(..)
   ) where
 
-import Control.Applicative
 import Indexed.Types
 import Indexed.Functor
 import Indexed.Foldable

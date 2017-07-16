@@ -20,7 +20,6 @@ module Indexed.Group
 
 import Indexed.Types
 import Indexed.Monoid
-import Data.Monoid
 
 class Monoid m => Group m where
   -- | @'inv' '.' 'inv' = 'id'@

@@ -14,7 +14,7 @@ module Indexed.Comonad.Store
 import Indexed.Types
 import Indexed.Functor
 
-class IComonad w => IComonadStore (s :: v -> *) (w :: (u -> *) -> u -> *) | w -> s v u where
+class IComonad w => IComonadStore (s :: v -> *) (w :: (v -> *) -> v -> *) | w -> s v where
   ipos    :: w a ~> s
   ipeek   :: Lim s -> w a ~> a
   iseek   :: Lim s -> w a ~> w a

@@ -49,7 +49,7 @@ infixl 1 ?>=, !>=, ?=>
 infixr 1 >~>, <~<, ~>~, ~<~
 
 -- | A 'Functor' between indexed categories.
-class IFunctor f where
+class IFunctor (f :: (i -> *) -> o -> *) where
   imap :: (a ~> b) -> f a ~> f b
 
   (/$) :: Lim b -> f a ~> f b
@@ -66,7 +66,7 @@ imapCoat :: IFunctor f => (a -> b) -> f (Coat a k) ~> f (Coat b k)
 imapCoat f = imap $ \ c -> Coat $ case c of Coat a -> f a
 {-# INLINE imapCoat #-}
 
-class IFunctor f => IApplicative f where
+class IFunctor f => IApplicative (f :: (index -> *) -> index -> *) where
   ireturn :: a ~> f a
 
   (/*/) :: f (At (a -> b) j) i -> f (At a k) j -> f (At b k) i
@@ -85,7 +85,7 @@ ireturnAt a = ireturn (At a)
 ireturnCoat :: IApplicative m => a -> m (Coat a i) j
 ireturnCoat a = ireturn (Coat a)
 
-class IApplicative m => IMonad m where
+class IApplicative m => IMonad (m :: (i -> *) -> i -> *) where
   ibind   :: (a ~> m b) -> m a ~> m b
   ijoin   :: m (m a) ~> m a
 
